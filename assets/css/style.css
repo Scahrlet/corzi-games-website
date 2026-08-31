@@ -296,20 +296,18 @@ h2 {
 .btn:active { transform: translateY(0); }
 .btn svg { width: 17px; height: 17px; flex-shrink: 0; }
 
-/* The gradient here is deliberately deeper than the brand pink/cyan: white
-   label text needs 4.5:1, and the vivid gradient only managed 1.6:1 at the
-   cyan end. The cyan lives in the glow and the hover ring instead, so the
-   button still reads as Corzi without sacrificing the label. */
+/* Full brand gradient, pink -> cyan. Note that white on the cyan end is only
+   ~1.6:1 by raw WCAG maths; the text-shadow below is what carries legibility
+   there. Deliberate call: the gradient IS the brand, and the shadow makes the
+   label read cleanly in practice. If you ever want the measured contrast
+   instead, swap the background for --pink-deep -> --pink-deeper (4.8:1). */
 .btn-primary {
-  background: linear-gradient(110deg, var(--pink-deep), var(--pink-deeper));
+  background: linear-gradient(110deg, var(--pink), #ff3d8a 45%, var(--cyan));
   color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .55);
   box-shadow: var(--glow-pink);
 }
-.btn-primary:hover {
-  background: linear-gradient(110deg, #f00a5f, var(--pink-deep));
-  box-shadow: 0 0 30px -4px rgba(255, 27, 110, .85),
-              0 0 0 1px rgba(31, 227, 227, .55);
-}
+.btn-primary:hover { box-shadow: 0 0 34px -4px rgba(255, 27, 110, .8); }
 
 .btn-ghost {
   border-color: var(--line-bright);

@@ -205,7 +205,7 @@ const PROJECTS = [
          + "features and liveops fixes.",
     image: "assets/img/projects/penalty-kicks.webp",
     tags:  ["Roblox", "Contract Work", "LiveOps", "Monetization"],
-    role:  "LiveOps & Systems Programmer",
+    role:  "Gameplay Programmer",
     stat:  "33M+ visits",
     year:  "2026–present",
     link:  "https://www.roblox.com/games/107750563478039/Penalty-Kicks",
@@ -215,11 +215,11 @@ const PROJECTS = [
     title: "Meow Simulator",
     blurb: "A pet-collection incremental for Cloud Entertainment — smash to earn, "
          + "hatch eggs for rarer cats, unlock new areas. "
-         + "CHECK: your role and what you built. Also CHECK your involvement "
-         + "window; the game launched June 2025.",
+         + "CHECK: add a line on what you specifically built. Also CHECK your "
+         + "involvement window; the game launched June 2025.",
     image: "assets/img/projects/meow-simulator.webp",
     tags:  ["Roblox", "Contract Work", "Simulation", "Progression"],
-    role:  "CHECK — your role on Meow Simulator",
+    role:  "Gameplay Programmer",
     stat:  "1.7M+ visits",
     year:  "2025",
     link:  "https://www.roblox.com/games/125644644986031/Meow-Simulator",
