@@ -28,6 +28,7 @@ GAMES = {
     10205485380: "Penalty Kicks!",
     8955905923:  "Fishing Chef",
     6928499048:  "Escape The Labryn - Shiloh & Bros",
+    7835171967:  "Meow Simulator",
 }
 
 API = "https://games.roblox.com/v1/games?universeIds="
@@ -43,15 +44,21 @@ def get(url):
 
 
 def human(n):
-    """303711938 -> '303M+'   4479694 -> '4.5M+'   1751 -> '1.7K'"""
+    """303711938 -> '303M+'   4479742 -> '4.4M+'   1763 -> '1.7K'
+
+    Always FLOORS, never rounds. These numbers are published with a "+"
+    suffix, so rounding up turns 4,479,742 into the claim "over 4.5 million"
+    -- which is false. Flooring keeps every figure literally true.
+    """
+    import math
     if n >= 10_000_000:
         return f"{n // 1_000_000}M+"
     if n >= 1_000_000:
-        return f"{n / 1_000_000:.1f}M+"
+        return f"{math.floor(n / 100_000) / 10:.1f}M+"
     if n >= 10_000:
         return f"{n // 1_000}K+"
     if n >= 1_000:
-        return f"{n / 1_000:.1f}K"
+        return f"{math.floor(n / 100) / 10:.1f}K"
     return str(n)
 
 

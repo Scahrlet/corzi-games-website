@@ -42,7 +42,7 @@ const SITE = {
    silence. Depth on huge titles is the stronger story.
    ------------------------------------------------------------ */
 const STATS = [
-  { value: "931M+", label: "Combined visits" },
+  { value: "933M+", label: "Combined visits" },
   { value: "1.8K",  label: "Playing concurrently" },
   { value: "27M+",  label: "Favorites" },
   { value: "14yr",  label: "On platform" },
@@ -142,7 +142,7 @@ const PROJECTS = [
          + "and game-wide UI alongside repeated security patches.",
     image: "assets/img/projects/world-defenders-td.webp",
     tags:  ["Roblox", "Contract Work", "LiveOps", "Optimization"],
-    role:  "Gameplay & LiveOps Programmer",
+    role:  "Lead Gameplay Programmer",
     stat:  "303M+ visits",
     year:  "2021–2022",
     link:  "https://www.roblox.com/games/5732966938/World-Defenders-TD",
@@ -177,7 +177,7 @@ const PROJECTS = [
     image: "assets/img/projects/escape-the-labryn.webp",
     tags:  ["Roblox", "Consulting", "Creator Launch", "Team Lead"],
     role:  "Technical Lead & Roblox Consultant",
-    stat:  "4.5M+ visits",
+    stat:  "4.4M+ visits",
     year:  "2024",  // CHECK: your window — did it run into 2025?
     link:  "https://www.roblox.com/games/86053660293681/Escape-The-Labryn-Shiloh-Bros",
     featured: true,
@@ -209,6 +209,20 @@ const PROJECTS = [
     stat:  "33M+ visits",
     year:  "2026–present",
     link:  "https://www.roblox.com/games/107750563478039/Penalty-Kicks",
+    featured: false,
+  },
+  {
+    title: "Meow Simulator",
+    blurb: "A pet-collection incremental for Cloud Entertainment — smash to earn, "
+         + "hatch eggs for rarer cats, unlock new areas. "
+         + "CHECK: your role and what you built. Also CHECK your involvement "
+         + "window; the game launched June 2025.",
+    image: "assets/img/projects/meow-simulator.webp",
+    tags:  ["Roblox", "Contract Work", "Simulation", "Progression"],
+    role:  "CHECK — your role on Meow Simulator",
+    stat:  "1.7M+ visits",
+    year:  "2025",
+    link:  "https://www.roblox.com/games/125644644986031/Meow-Simulator",
     featured: false,
   },
 ];
