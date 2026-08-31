@@ -119,7 +119,8 @@ const SERVICES = [
      title / blurb / image / tags   (required)
      role    Your role, e.g. "Gameplay Programmer"
      stat    Headline number, shown in the brand gradient
-     year    Shown as a pill on grid cards
+     year    YOUR involvement window, not the game's launch
+             year -- e.g. "2021-2022", "2026-present"
      link    URL to the experience
      featured (bool)  true = large hero card up top
 
@@ -143,7 +144,7 @@ const PROJECTS = [
     tags:  ["Roblox", "Contract Work", "LiveOps", "Optimization"],
     role:  "Gameplay & LiveOps Programmer",
     stat:  "303M+ visits",
-    year:  "2020",
+    year:  "2021–2022",
     link:  "https://www.roblox.com/games/5732966938/World-Defenders-TD",
     featured: true,
   },
@@ -158,7 +159,7 @@ const PROJECTS = [
     tags:  ["Roblox", "Contract Work", "Gameplay Systems", "Monetization"],
     role:  "Gameplay Programmer",
     stat:  "582M+ visits",
-    year:  "2021",
+    year:  "2022–2023",
     link:  "https://www.roblox.com/games/7645738534/Light-Game",
     featured: true,
   },
@@ -177,7 +178,7 @@ const PROJECTS = [
     tags:  ["Roblox", "Consulting", "Creator Launch", "Team Lead"],
     role:  "Technical Lead & Roblox Consultant",
     stat:  "4.5M+ visits",
-    year:  "2024",
+    year:  "2024",  // CHECK: your window — did it run into 2025?
     link:  "https://www.roblox.com/games/86053660293681/Escape-The-Labryn-Shiloh-Bros",
     featured: true,
   },
@@ -192,7 +193,7 @@ const PROJECTS = [
     tags:  ["Roblox", "Contract Work", "Gameplay Systems", "Project Rescue"],
     role:  "Gameplay Programmer",
     stat:  "8.0M+ visits",
-    year:  "2025",
+    year:  "2025–2026",
     link:  "https://www.roblox.com/games/88599461076137/Fishing-Chef",
     featured: false,
   },
@@ -206,7 +207,7 @@ const PROJECTS = [
     tags:  ["Roblox", "Contract Work", "LiveOps", "Monetization"],
     role:  "LiveOps & Systems Programmer",
     stat:  "33M+ visits",
-    year:  "2026",
+    year:  "2026–present",
     link:  "https://www.roblox.com/games/107750563478039/Penalty-Kicks",
     featured: false,
   },
