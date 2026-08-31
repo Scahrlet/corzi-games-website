@@ -36,7 +36,10 @@ const SITE = {
    ------------------------------------------------------------ */
 const STATS = [
   { value: "931M+", label: "Combined visits" },
-  { value: "5",     label: "Shipped titles" },
+  // CHECK: you said "at least 5 standalone" on top of the 5 contract
+  // titles below, plus contributions. 10+ is conservative and true by
+  // your own count -- raise it if the real number is higher.
+  { value: "10+",   label: "Titles shipped" },
   { value: "27M+",  label: "Favorites" },
   { value: "14yr",  label: "On platform" },
 ];
@@ -121,6 +124,20 @@ const SERVICES = [
      link    URL to the experience
      featured (bool)  true = large hero card up top
    ============================================================ */
+/* CURATION RULE
+   "Shipped" means released, not successful -- a launched title counts even
+   if it underperformed. But the STATS count and this list do different jobs:
+   the count should include everything you shipped, while this list stays
+   curated. A reader judges you by the WEAKEST item on display, so a low-visit
+   title sitting beside a 582M one costs you more than it adds.
+
+   Rule of thumb: if it doesn't beat ~1M visits, or doesn't demonstrate a
+   skill nothing else here shows, leave it out of the list and let it live
+   in the headline count instead.
+
+   Tag your own releases "Solo Shipped" (vs "Contract Work" below) -- the
+   filter buttons build themselves from tags, so that split shows up for
+   free and proves you both ship your own games AND deliver for clients. */
 const PROJECTS = [
   {
     title: "Light Game",
@@ -129,7 +146,7 @@ const PROJECTS = [
          + "a server. One of the largest party experiences on the platform. "
          + "CHECK: add one line on what you specifically built.",
     image: "assets/img/projects/light-game.webp",
-    tags:  ["Roblox", "Gameplay Systems", "Live Ops"],
+    tags:  ["Roblox", "Contract Work", "Gameplay Systems", "Live Ops"],
     role:  "CHECK — your role on Light Game",
     stat:  "582M+ visits",
     year:  "2021",
@@ -144,7 +161,7 @@ const PROJECTS = [
          + "the trading system and tower framework are the impressive parts "
          + "if you owned them.",
     image: "assets/img/projects/world-defenders-td.webp",
-    tags:  ["Roblox", "Gameplay Systems", "Economy"],
+    tags:  ["Roblox", "Contract Work", "Gameplay Systems", "Economy"],
     role:  "CHECK — your role on World Defenders TD",
     stat:  "303M+ visits",
     year:  "2020",
@@ -158,7 +175,7 @@ const PROJECTS = [
          + "visits in its first few months, with a live concurrent playerbase "
          + "in the thousands. CHECK: add one line on what you specifically built.",
     image: "assets/img/projects/penalty-kicks.webp",
-    tags:  ["Roblox", "Gameplay Systems", "PvP"],
+    tags:  ["Roblox", "Contract Work", "Gameplay Systems", "PvP"],
     role:  "CHECK — your role on Penalty Kicks",
     stat:  "33M+ visits",
     year:  "2026",
@@ -172,7 +189,7 @@ const PROJECTS = [
          + "system, modifier-based runs and 1-4 player co-op. "
          + "CHECK: add one line on what you specifically built.",
     image: "assets/img/projects/escape-the-labryn.webp",
-    tags:  ["Roblox", "Creator Launch", "Co-op"],
+    tags:  ["Roblox", "Contract Work", "Creator Launch", "Co-op"],
     role:  "CHECK — your role on Escape The Labryn",
     stat:  "4.5M+ visits",
     year:  "2024",
@@ -185,7 +202,7 @@ const PROJECTS = [
          + "ancient Japanese town, with rod progression and stall upgrades. "
          + "CHECK: add one line on what you specifically built.",
     image: "assets/img/projects/fishing-chef.webp",
-    tags:  ["Roblox", "Simulation", "Progression"],
+    tags:  ["Roblox", "Contract Work", "Simulation", "Progression"],
     role:  "CHECK — your role on Fishing Chef",
     stat:  "8.0M+ visits",
     year:  "2025",

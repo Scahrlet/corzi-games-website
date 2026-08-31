@@ -220,9 +220,11 @@
       host.appendChild(card);
     });
 
-    // Build filter buttons from the tags actually in use.
+    // Build filter buttons from the tags actually in use. Not worth showing
+    // a row of filters for a grid you can already take in at a glance --
+    // they reappear on their own once there's enough work to sift through.
     const tags = [...new Set(list.flatMap((p) => p.tags || []))].sort();
-    if (tags.length < 2) { filters.hidden = true; return; }
+    if (tags.length < 2 || list.length < 4) { filters.hidden = true; return; }
 
     ["All", ...tags].forEach((t, i) => {
       const b = el("button", "filter" + (i === 0 ? " is-active" : ""));
