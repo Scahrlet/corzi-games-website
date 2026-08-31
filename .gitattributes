@@ -1,0 +1,9 @@
+# Normalize all text to LF in the repository. Without this, the Python
+# tools (which write LF) fight Git's CRLF checkout on Windows and every
+# stats refresh shows up as a whole-file rewrite in the diff.
+* text=auto eol=lf
+
+# Binary assets: never touch these.
+*.png  binary
+*.webp binary
+*.ttf  binary

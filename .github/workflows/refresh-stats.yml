@@ -1,0 +1,41 @@
+name: Refresh Roblox stats
+
+# Keeps the hero stat strip current without you thinking about it.
+# Visit counts only ever go up, so a hand-entered number quietly
+# understates you a little more every week.
+#
+# Runs at 22:00 UTC (~6pm ET) so the concurrent-player sample is taken
+# at a consistent hour rather than drifting across the day.
+
+on:
+  schedule:
+    - cron: "0 22 * * *"
+  workflow_dispatch:        # lets you trigger it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pull current stats and patch content.js
+        run: python tools/refresh_stats.py --write
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- assets/js/content.js; then
+            echo "Stats unchanged; nothing to commit."
+          else
+            git add assets/js/content.js
+            git commit -m "Refresh Roblox stats [skip ci]"
+            git push
+          fi

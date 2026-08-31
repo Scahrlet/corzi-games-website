@@ -51,6 +51,12 @@
   $("#footerLegal").textContent =
     `© ${year} ${SITE.legalName}` + (isSet(SITE.location) ? ` · ${SITE.location}` : "");
 
+  /* Date the stats honestly rather than implying they're live. */
+  if (isSet(SITE.statsUpdated)) {
+    const note = $("#statsNote");
+    if (note) note.textContent = `Roblox stats updated ${SITE.statsUpdated}`;
+  }
+
   /* ============================================================
      SOCIAL / CONTACT LINKS
      Built once, cloned into the hero and the contact panel.
