@@ -1,5 +1,7 @@
 # Corzi Games — corzigames.com
 
+*Website for Corzi Games! Created by me with the assistance of Claude; hire us for all things ROBLOX.*
+
 Portfolio site for **Corzi Games LLC**. Static HTML/CSS/JS, no build step,
 no dependencies. Edit a file, push, it's live in about a minute.
 
