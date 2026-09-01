@@ -178,7 +178,7 @@ const PROJECTS = [
     tags:  ["Roblox", "Consulting", "Creator Launch", "Team Lead"],
     role:  "Technical Lead & Roblox Consultant",
     stat:  "4.4M+ visits",
-    year:  "2024",  // CHECK: your window — did it run into 2025?
+    year:  "2025–2026",
     link:  "https://www.roblox.com/games/86053660293681/Escape-The-Labryn-Shiloh-Bros",
     featured: true,
   },
