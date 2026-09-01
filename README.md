@@ -7,41 +7,27 @@ no dependencies. Edit a file, push, it's live in about a minute.
 
 ---
 
-## Before you publish
+## Status
 
-Two things must happen before this site goes in front of anyone at RDC.
+Live at <https://corzigames.com>, served by GitHub Pages from `main`.
 
-### 1. Fix the role claims — do this first
+Two small things are still open — search for `CHECK` in
+`assets/js/content.js`:
 
-Every visit count, link and thumbnail in `assets/js/content.js` is real,
-pulled from the live Roblox API on 2026-08-31. **Every `role` field is a
-placeholder.** I know from your Roblox bio that you worked on Light Game,
-World Defenders and Labryn, but not in what capacity — and I had no source
-at all for your role on Penalty Kicks or Fishing Chef.
+- **Escape The Labryn** — your involvement window (currently `2024`; did it
+  run into 2025?)
+- **Meow Simulator** — one line on what you specifically built, plus your
+  involvement window
 
-Find them all:
+Optional extras, each a `null` that simply stays hidden until filled in:
+`LINKS.discord`, and `SITE.location` for the footer.
 
-```bash
-grep -n "CHECK" assets/js/content.js
-```
+### On the contact email
 
-Replace each `role:` with your real title, and each `CHECK: add one line
-on what you specifically built` with the actual thing you built. Be
-specific — "wrote the tower upgrade and trading systems" beats "developer".
-A studio lead at RDC will ask about these, and a claim you can't back is
-worse than a modest one you can.
-
-### 2. Add a business email
-
-`LINKS.email` is `null`, so the site currently has **no way to contact you**
-except Talent Hub. That's the single biggest gap. Get something at your own
-domain — `hello@corzigames.com` — because a Gmail address on an LLC site
-reads as a hobby. Cloudflare Email Routing does this free: Cloudflare
-dashboard → your domain → Email → Email Routing, forward to your Gmail.
-
-While you're in `content.js`, also fill in `linkedin`, `discord`, and
-`location`. Anything left `null` is simply hidden, so the site won't break —
-it just won't convert.
+`corzigames@gmail.com` works today, but an address at your own domain reads
+better on an LLC site. Cloudflare Email Routing does it for free: Cloudflare
+dashboard → corzigames.com → **Email** → **Email Routing**, forward
+`hello@corzigames.com` to your Gmail, then update `LINKS.email`.
 
 ---
 
@@ -95,60 +81,42 @@ Then open <http://localhost:8080>. Don't open `index.html` by double-clicking �
 
 ## Deploying
 
-### One-time: push to GitHub
-
-```bash
-git init -b main
-git remote add origin https://github.com/Scahrlet/corzi-games-website.git
-git add -A
-git commit -m "Initial site"
-git push -u origin main
-```
-
-### One-time: turn on GitHub Pages
-
-1. Repo → **Settings** → **Pages**
-2. **Source**: Deploy from a branch → **main** / **(root)** → Save
-3. **Custom domain**: enter `corzigames.com` → Save
-
-The `CNAME` file in this repo already contains `corzigames.com`, so GitHub
-will pick it up.
-
-### One-time: point Cloudflare at GitHub
-
-In the Cloudflare dashboard → `corzigames.com` → **DNS** → add:
-
-| Type  | Name | Content                | Proxy status         |
-|-------|------|------------------------|----------------------|
-| A     | `@`  | `185.199.108.153`      | **DNS only** (grey)  |
-| A     | `@`  | `185.199.109.153`      | **DNS only** (grey)  |
-| A     | `@`  | `185.199.110.153`      | **DNS only** (grey)  |
-| A     | `@`  | `185.199.111.153`      | **DNS only** (grey)  |
-| CNAME | `www`| `scahrlet.github.io`   | **DNS only** (grey)  |
-
-Then **SSL/TLS** → **Overview** → set encryption mode to **Full (strict)**.
-
-**Two gotchas that will waste your afternoon if you miss them:**
-
-- **Start with the grey cloud, not orange.** GitHub issues your HTTPS
-  certificate by fetching a challenge file over plain HTTP. If Cloudflare's
-  proxy is on, GitHub can't reach it and the certificate never issues. Leave
-  proxying off until GitHub Pages shows the green "certificate issued" notice
-  (usually 10–20 minutes), then turn the orange cloud on if you want it.
-- **Never use SSL mode "Flexible."** Cloudflare would talk to GitHub over
-  HTTP while GitHub forces HTTPS, and you get an infinite redirect loop.
-  Full (strict) is correct.
-
-Once the certificate is issued, go back to repo → Settings → Pages and tick
-**Enforce HTTPS**.
-
-### Every update after that
+### Updating the live site
 
 ```bash
 git add -A && git commit -m "Update projects" && git push
 ```
 
-Live in about 60 seconds.
+Live in about 60 seconds. That's the whole loop.
+
+### How it's wired (already done — for reference)
+
+**GitHub Pages**: Settings → Pages → Source *Deploy from a branch* →
+`main` / `(root)`, custom domain `corzigames.com`. The repo must stay
+**public** — Pages can't serve a private repo on a free plan.
+
+**Cloudflare DNS** — all five records on **DNS only** (grey cloud):
+
+| Type  | Name  | Content              |
+|-------|-------|----------------------|
+| A     | `@`   | `185.199.108.153`    |
+| A     | `@`   | `185.199.109.153`    |
+| A     | `@`   | `185.199.110.153`    |
+| A     | `@`   | `185.199.111.153`    |
+| CNAME | `www` | `scahrlet.github.io` |
+
+SSL/TLS mode: **Full (strict)**.
+
+**Why grey cloud matters.** GitHub issues the HTTPS certificate by serving a
+challenge over plain HTTP. With Cloudflare's proxy on, GitHub never sees that
+request, so the cert never issues — and then Full (strict) rejects the
+uncertified origin with a **526**. It's a deadlock: proxy on → no cert → 526.
+Turning proxying off breaks it. Once the cert exists you *can* re-enable the
+orange cloud, and Full (strict) will accept it.
+
+**Do not "fix" a 526 by switching SSL to Flexible.** The error vanishes, but
+Cloudflare then talks to GitHub unencrypted and the cert still never issues,
+so you're stuck on a workaround permanently.
 
 ---
 
