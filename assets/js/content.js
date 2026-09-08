@@ -43,7 +43,7 @@ const SITE = {
    ------------------------------------------------------------ */
 const STATS = [
   { value: "935M+", label: "Combined visits" },
-  { value: "2.7K",  label: "Playing concurrently" },
+  { value: "2.8K",  label: "Playing concurrently" },
   { value: "27M+",  label: "Favorites" },
   { value: "14yr",  label: "On platform" },
 ];
