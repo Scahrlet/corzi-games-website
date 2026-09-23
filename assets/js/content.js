@@ -122,7 +122,9 @@ const SERVICES = [
      year    YOUR involvement window, not the game's launch
              year -- e.g. "2021-2022", "2026-present"
      link    URL to the experience
-     featured (bool)  true = large hero card up top
+     featured (bool)  true = large hero card up top. The first
+             FEATURED_VISIBLE featured cards show immediately; the
+             rest sit behind a "View more" button, in list order.
 
    CURATION RULE
    "Shipped" means released, not successful. But this list and
@@ -132,20 +134,21 @@ const SERVICES = [
    Tag your own releases "Solo Shipped" vs "Contract Work" — the
    filter buttons build themselves from tags.
    ============================================================ */
+const FEATURED_VISIBLE = 3;
+
 const PROJECTS = [
   {
-    title: "World Defenders TD",
-    blurb: "Cut the crash rate from 32% to 0.05% overnight, then solo-ran "
-         + "liveops for the team for several months. Built dozens of towers and "
-         + "multiple new tower types, added trio and squad modes to a solo/duo "
-         + "game, rewrote matchmaking, and shipped a new gamemode, new worlds "
-         + "and game-wide UI alongside repeated security patches.",
-    image: "assets/img/projects/world-defenders-td.webp",
-    tags:  ["Roblox", "Contract Work", "LiveOps", "Optimization"],
-    role:  "Lead Gameplay Programmer",
-    stat:  "303M+ visits",
-    year:  "2021–2022",
-    link:  "https://www.roblox.com/games/5732966938/World-Defenders-TD",
+    title: "Penalty Kicks!",
+    blurb: "Joined during liveops on a game that passed 33 million visits in "
+         + "its first months. Built the shoes and gacha systems and converted "
+         + "the game from R6 to R15, lifting revenue. Still shipping major "
+         + "features and liveops fixes.",
+    image: "assets/img/projects/penalty-kicks.webp",
+    tags:  ["Roblox", "Contract Work", "LiveOps", "Monetization"],
+    role:  "Gameplay Programmer",
+    stat:  "33M+ visits",
+    year:  "2026–present",
+    link:  "https://www.roblox.com/games/107750563478039/Penalty-Kicks",
     featured: true,
   },
   {
@@ -164,9 +167,21 @@ const PROJECTS = [
     featured: true,
   },
   {
-    // Featured despite the smallest visit count here: it's the only project
-    // that demonstrates the off-platform consulting work, which is what
-    // studios new to Roblox are actually shopping for.
+    title: "World Defenders TD",
+    blurb: "Cut the crash rate from 32% to 0.05% overnight, then solo-ran "
+         + "liveops for the team for several months. Built dozens of towers and "
+         + "multiple new tower types, added trio and squad modes to a solo/duo "
+         + "game, rewrote matchmaking, and shipped a new gamemode, new worlds "
+         + "and game-wide UI alongside repeated security patches.",
+    image: "assets/img/projects/world-defenders-td.webp",
+    tags:  ["Roblox", "Contract Work", "LiveOps", "Optimization"],
+    role:  "Lead Gameplay Programmer",
+    stat:  "303M+ visits",
+    year:  "2021–2022",
+    link:  "https://www.roblox.com/games/5732966938/World-Defenders-TD",
+    featured: true,
+  },
+  {
     title: "Escape The Labryn — Shiloh & Bros",
     blurb: "A YouTuber-owned title, stuck in development, that I was brought in "
          + "to land. I worked directly with the channel and their agents to turn "
@@ -178,9 +193,23 @@ const PROJECTS = [
     tags:  ["Roblox", "Consulting", "Creator Launch", "Team Lead"],
     role:  "Technical Lead & Roblox Consultant",
     stat:  "4.4M+ visits",
-    year:  "2025–2026",
+    year:  "2025–present",
     link:  "https://www.roblox.com/games/86053660293681/Escape-The-Labryn-Shiloh-Bros",
-    featured: true,
+    featured: false,
+  },
+  {
+    title: "Shiloh & Bros: M.O.M. HQ",
+    blurb: "The next Shiloh & Bros title, in development with the channel and "
+         + "their agents on the same footing as Labryn: I turn the creative "
+         + "direction into a Roblox scope, lead the developers building it, and "
+         + "take on the programming myself when something needs it. Unreleased "
+         + "and upcoming.",
+    image: "assets/img/projects/shiloh-bros-mom-hq.webp",
+    tags:  ["Roblox", "Consulting", "Creator Launch", "Team Lead", "In Development"],
+    role:  "Technical Lead & Roblox Consultant",
+    year:  "2025–present",
+    link:  "https://www.roblox.com/games/18426986489/Shiloh-Bros-M-O-M-HQ",
+    featured: false,
   },
   {
     title: "Fishing Chef",
@@ -193,23 +222,9 @@ const PROJECTS = [
     tags:  ["Roblox", "Contract Work", "Gameplay Systems", "Project Rescue"],
     role:  "Gameplay Programmer",
     stat:  "8.0M+ visits",
-    year:  "2025–2026",
+    year:  "2026",
     link:  "https://www.roblox.com/games/88599461076137/Fishing-Chef",
-    featured: false,
-  },
-  {
-    title: "Penalty Kicks!",
-    blurb: "Joined during liveops on a game that passed 33 million visits in "
-         + "its first months. Built the shoes and gacha systems and converted "
-         + "the game from R6 to R15, lifting revenue. Still shipping major "
-         + "features and liveops fixes.",
-    image: "assets/img/projects/penalty-kicks.webp",
-    tags:  ["Roblox", "Contract Work", "LiveOps", "Monetization"],
-    role:  "Gameplay Programmer",
-    stat:  "33M+ visits",
-    year:  "2026–present",
-    link:  "https://www.roblox.com/games/107750563478039/Penalty-Kicks",
-    featured: false,
+    featured: true,
   },
   {
     title: "Meow Simulator",

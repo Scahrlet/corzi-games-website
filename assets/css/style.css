@@ -127,6 +127,30 @@ h2 {
   margin-top: 1rem;
 }
 
+/* ---------- about ----------
+   Four paragraphs of prose in a 58ch column left the right half of a
+   desktop viewport empty. Two columns: heading pinned left, copy right.
+   Collapses to one column at the nav breakpoint. */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
+}
+.about-head { margin-bottom: 0; position: sticky; top: 100px; }
+.about-copy p {
+  color: var(--text-muted);
+  max-width: 62ch;
+  font-size: 1.06rem;
+  line-height: 1.7;
+}
+.about-copy p + p { margin-top: 1.25rem; }
+@media (max-width: 880px) {
+  .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .about-head { position: static; }
+  .about-copy p { font-size: 1rem; }
+}
+
 /* ---------- skip link ---------- */
 .skip {
   position: absolute;
@@ -359,6 +383,18 @@ h2 {
 
 .hero-inner { max-width: 820px; }
 
+/* Centred on desktop: left-anchored, the 820px block left the right half
+   of a wide monitor empty. Mobile stays left-aligned since the block already
+   fills the width there. */
+@media (min-width: 881px) {
+  .hero-inner { margin-inline: auto; text-align: center; }
+  .hero .pitch { margin-inline: auto; }
+  .hero .stats { margin-inline: auto; justify-content: center; }
+  .hero .stats > div { text-align: left; }
+  .hero .hero-actions,
+  .hero .social-row { justify-content: center; }
+}
+
 .pill {
   display: inline-flex;
   align-items: center;
@@ -393,11 +429,11 @@ h2 {
   font-weight: 700;
 }
 .hero h1 .grad {
-  /* Fallback: sRGB interpolation dips through grey between pink and cyan,
-     so we pin a saturated magenta midpoint to keep the ramp neon. */
+  /* sRGB on purpose. `in oklch` looked richer on desktop, but some Android
+     renderers (seen on a Galaxy S24 Ultra) walk the hue the long way round,
+     pink -> yellow -> green -> cyan. sRGB dips through grey between pink and
+     cyan instead, so the saturated magenta mid-stop keeps the ramp neon. */
   background: linear-gradient(105deg, var(--pink) 8%, #e0329f 46%, var(--cyan) 92%);
-  /* Modern browsers: oklch keeps chroma high across the whole ramp. */
-  background: linear-gradient(105deg in oklch, var(--pink) 8%, var(--cyan) 92%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -444,8 +480,7 @@ h2 {
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -.02em;
-  background: linear-gradient(105deg, var(--pink), #e0329f 55%, var(--cyan));
-  background: linear-gradient(105deg in oklch, var(--pink), var(--cyan));
+  background: linear-gradient(105deg, var(--pink), #e0329f 55%, var(--cyan)); /* sRGB, see .hero h1 */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -581,6 +616,13 @@ h2 {
   color: var(--text-muted);
 }
 .feature-body .btn { align-self: flex-start; margin-top: 1.75rem; }
+
+/* display:grid on the card outranks the hidden attribute's UA rule. */
+.feature-card[hidden] { display: none; }
+
+.featured-more { display: flex; justify-content: center; margin-top: 2rem; }
+.featured-more[hidden] { display: none; }
+.featured-more .btn svg { transform: rotate(90deg); }
 
 @media (max-width: 840px) {
   .feature-card { grid-template-columns: 1fr; }

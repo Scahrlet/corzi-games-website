@@ -166,8 +166,11 @@
     const list = PROJECTS.filter((p) => p.featured);
     if (!host || !list.length) return;
 
-    list.forEach((p) => {
+    const limit = typeof FEATURED_VISIBLE === "number" ? FEATURED_VISIBLE : list.length;
+
+    list.forEach((p, i) => {
       const card = el("article", "feature-card reveal");
+      if (i >= limit) card.hidden = true;
       card.innerHTML = `
         <div class="feature-media">
           <img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy" decoding="async">
@@ -186,6 +189,23 @@
         </div>`;
       host.appendChild(card);
     });
+
+    // "View more" reveals the featured cards past the limit. One-way: once
+    // expanded there's no reason to fold them back up.
+    const more = $("#featuredMore");
+    if (!more) return;
+    const moreRow = more.closest(".featured-more") || more;
+    if (list.length <= limit) { moreRow.hidden = true; return; }
+
+    more.addEventListener("click", () => {
+      host.querySelectorAll(".feature-card[hidden]").forEach((c) => {
+        c.hidden = false;
+        // The scroll-reveal observer picks these up on its own; this covers
+        // browsers where it doesn't fire on a display change.
+        requestAnimationFrame(() => c.classList.add("is-visible"));
+      });
+      moreRow.hidden = true;
+    }, { once: true });
   })();
 
   /* ---------- grid + filters ---------- */
