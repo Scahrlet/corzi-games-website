@@ -28,7 +28,7 @@ const SITE = {
 
   // Stamped by tools/refresh_stats.py and the daily CI refresh. Shown in the
   // footer so the numbers below are honestly dated rather than implied live.
-  statsUpdated: "2026-10-13",
+  statsUpdated: "2026-10-14",
 };
 
 /* ------------------------------------------------------------
@@ -43,7 +43,7 @@ const SITE = {
    ------------------------------------------------------------ */
 const STATS = [
   { value: "945M+", label: "Combined visits" },
-  { value: "812",  label: "Playing concurrently" },
+  { value: "1.1K",  label: "Playing concurrently" },
   { value: "27M+",  label: "Favorites" },
   { value: "14yr",  label: "On platform" },
 ];
